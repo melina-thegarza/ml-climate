@@ -1,0 +1,453 @@
+{
+    "meta": {
+        "processedTime": "2025-02-21T19:27:19.523657Z",
+        "currency": "USD",
+        "symbol": "LGIH",
+        "exchangeName": "NMS",
+        "fullExchangeName": "NasdaqGS",
+        "instrumentType": "EQUITY",
+        "firstTradeDate": 1383834600,
+        "regularMarketTime": 1740165814,
+        "hasPrePostMarketData": true,
+        "gmtoffset": -18000,
+        "timezone": "EST",
+        "exchangeTimezoneName": "America\/New_York",
+        "regularMarketPrice": 77.8,
+        "fiftyTwoWeekHigh": 125.83,
+        "fiftyTwoWeekLow": 77.8,
+        "regularMarketDayHigh": 81.565,
+        "regularMarketDayLow": 77.8,
+        "regularMarketVolume": 167055,
+        "longName": "LGI Homes, Inc.",
+        "shortName": "LGI Homes, Inc.",
+        "chartPreviousClose": 13.7,
+        "priceHint": 2,
+        "dataGranularity": "3mo",
+        "range": "",
+        "version": "v1.0",
+        "status": 200,
+        "copywrite": "https:\/\/apicalls.io"
+    },
+    "body": {
+        "1422766800": {
+            "date": "01-02-2015",
+            "date_utc": 1422766800,
+            "open": 14.18,
+            "high": 18.05,
+            "low": 13,
+            "close": 16.47,
+            "volume": 6866000,
+            "adjclose": 16.47
+        },
+        "1430452800": {
+            "date": "01-05-2015",
+            "date_utc": 1430452800,
+            "open": 16.54,
+            "high": 20.1,
+            "low": 16.27,
+            "close": 19.54,
+            "volume": 10525100,
+            "adjclose": 19.54
+        },
+        "1438401600": {
+            "date": "01-08-2015",
+            "date_utc": 1438401600,
+            "open": 19.52,
+            "high": 33.87,
+            "low": 18.62,
+            "close": 28.03,
+            "volume": 31259200,
+            "adjclose": 28.03
+        },
+        "1446350400": {
+            "date": "01-11-2015",
+            "date_utc": 1446350400,
+            "open": 28.1,
+            "high": 36.07,
+            "low": 18.74,
+            "close": 21.96,
+            "volume": 37712100,
+            "adjclose": 21.96
+        },
+        "1454302800": {
+            "date": "01-02-2016",
+            "date_utc": 1454302800,
+            "open": 21.61,
+            "high": 29.77,
+            "low": 19,
+            "close": 28.01,
+            "volume": 24562400,
+            "adjclose": 28.01
+        },
+        "1462075200": {
+            "date": "01-05-2016",
+            "date_utc": 1462075200,
+            "open": 28.04,
+            "high": 36.44,
+            "low": 23.86,
+            "close": 34.33,
+            "volume": 30322400,
+            "adjclose": 34.33
+        },
+        "1470024000": {
+            "date": "01-08-2016",
+            "date_utc": 1470024000,
+            "open": 34.46,
+            "high": 40.47,
+            "low": 28.91,
+            "close": 29.76,
+            "volume": 28964100,
+            "adjclose": 29.76
+        },
+        "1477972800": {
+            "date": "01-11-2016",
+            "date_utc": 1477972800,
+            "open": 29.84,
+            "high": 33.86,
+            "low": 28.23,
+            "close": 31.06,
+            "volume": 21801900,
+            "adjclose": 31.06
+        },
+        "1485925200": {
+            "date": "01-02-2017",
+            "date_utc": 1485925200,
+            "open": 31.17,
+            "high": 34.84,
+            "low": 26.82,
+            "close": 31.83,
+            "volume": 27552600,
+            "adjclose": 31.83
+        },
+        "1493611200": {
+            "date": "01-05-2017",
+            "date_utc": 1493611200,
+            "open": 31.97,
+            "high": 45.09,
+            "low": 28.57,
+            "close": 44.3,
+            "volume": 22438200,
+            "adjclose": 44.3
+        },
+        "1501560000": {
+            "date": "01-08-2017",
+            "date_utc": 1501560000,
+            "open": 44.38,
+            "high": 60.48,
+            "low": 40.73,
+            "close": 60.33,
+            "volume": 23021700,
+            "adjclose": 60.33
+        },
+        "1509508800": {
+            "date": "01-11-2017",
+            "date_utc": 1509508800,
+            "open": 60.95,
+            "high": 79.55,
+            "low": 58.95,
+            "close": 67.68,
+            "volume": 22621300,
+            "adjclose": 67.68
+        },
+        "1517461200": {
+            "date": "01-02-2018",
+            "date_utc": 1517461200,
+            "open": 67.24,
+            "high": 75.52,
+            "low": 55.34,
+            "close": 69.2,
+            "volume": 25870500,
+            "adjclose": 69.2
+        },
+        "1525147200": {
+            "date": "01-05-2018",
+            "date_utc": 1525147200,
+            "open": 69.05,
+            "high": 81.88,
+            "low": 50.78,
+            "close": 51.69,
+            "volume": 27138800,
+            "adjclose": 51.69
+        },
+        "1533096000": {
+            "date": "01-08-2018",
+            "date_utc": 1533096000,
+            "open": 51.7,
+            "high": 59.27,
+            "low": 37.16,
+            "close": 42.79,
+            "volume": 25070800,
+            "adjclose": 42.79
+        },
+        "1541044800": {
+            "date": "01-11-2018",
+            "date_utc": 1541044800,
+            "open": 42.79,
+            "high": 60.3,
+            "low": 37.73,
+            "close": 59.3,
+            "volume": 26146200,
+            "adjclose": 59.3
+        },
+        "1548997200": {
+            "date": "01-02-2019",
+            "date_utc": 1548997200,
+            "open": 59.66,
+            "high": 71.5,
+            "low": 52.16,
+            "close": 69.31,
+            "volume": 18872000,
+            "adjclose": 69.31
+        },
+        "1556683200": {
+            "date": "01-05-2019",
+            "date_utc": 1556683200,
+            "open": 69.48,
+            "high": 76.93,
+            "low": 61.88,
+            "close": 70.29,
+            "volume": 16239600,
+            "adjclose": 70.29
+        },
+        "1564632000": {
+            "date": "01-08-2019",
+            "date_utc": 1564632000,
+            "open": 70.52,
+            "high": 89,
+            "low": 67.19,
+            "close": 78.48,
+            "volume": 17679800,
+            "adjclose": 78.48
+        },
+        "1572580800": {
+            "date": "01-11-2019",
+            "date_utc": 1572580800,
+            "open": 78.87,
+            "high": 83.68,
+            "low": 67.35,
+            "close": 79.74,
+            "volume": 15480200,
+            "adjclose": 79.74
+        },
+        "1580533200": {
+            "date": "01-02-2020",
+            "date_utc": 1580533200,
+            "open": 80,
+            "high": 95.72,
+            "low": 33,
+            "close": 60.58,
+            "volume": 32107000,
+            "adjclose": 60.58
+        },
+        "1588305600": {
+            "date": "01-05-2020",
+            "date_utc": 1588305600,
+            "open": 57.04,
+            "high": 120.54,
+            "low": 56.9,
+            "close": 114.11,
+            "volume": 23834300,
+            "adjclose": 114.11
+        },
+        "1596254400": {
+            "date": "01-08-2020",
+            "date_utc": 1596254400,
+            "open": 116,
+            "high": 132.98,
+            "low": 101.3,
+            "close": 106.88,
+            "volume": 17302100,
+            "adjclose": 106.88
+        },
+        "1604203200": {
+            "date": "01-11-2020",
+            "date_utc": 1604203200,
+            "open": 108.79,
+            "high": 125.09,
+            "low": 95.54,
+            "close": 106.71,
+            "volume": 19066800,
+            "adjclose": 106.71
+        },
+        "1612155600": {
+            "date": "01-02-2021",
+            "date_utc": 1612155600,
+            "open": 108.53,
+            "high": 172.05,
+            "low": 105.07,
+            "close": 165.78,
+            "volume": 18046600,
+            "adjclose": 165.78
+        },
+        "1619841600": {
+            "date": "01-05-2021",
+            "date_utc": 1619841600,
+            "open": 167.03,
+            "high": 188,
+            "low": 149.5,
+            "close": 170.9,
+            "volume": 16981700,
+            "adjclose": 170.9
+        },
+        "1627790400": {
+            "date": "01-08-2021",
+            "date_utc": 1627790400,
+            "open": 172.6,
+            "high": 175.9,
+            "low": 135.15,
+            "close": 149.3,
+            "volume": 11301200,
+            "adjclose": 149.3
+        },
+        "1635739200": {
+            "date": "01-11-2021",
+            "date_utc": 1635739200,
+            "open": 148.79,
+            "high": 160.59,
+            "low": 113.74,
+            "close": 124.51,
+            "volume": 15125700,
+            "adjclose": 124.51
+        },
+        "1643691600": {
+            "date": "01-02-2022",
+            "date_utc": 1643691600,
+            "open": 125,
+            "high": 134.05,
+            "low": 88.13,
+            "close": 93.71,
+            "volume": 21669500,
+            "adjclose": 93.71
+        },
+        "1651377600": {
+            "date": "01-05-2022",
+            "date_utc": 1651377600,
+            "open": 93.34,
+            "high": 113.01,
+            "low": 71.73,
+            "close": 112.8,
+            "volume": 18569200,
+            "adjclose": 112.8
+        },
+        "1659326400": {
+            "date": "01-08-2022",
+            "date_utc": 1659326400,
+            "open": 111.24,
+            "high": 116.1,
+            "low": 74.61,
+            "close": 92.05,
+            "volume": 14306900,
+            "adjclose": 92.05
+        },
+        "1667275200": {
+            "date": "01-11-2022",
+            "date_utc": 1667275200,
+            "open": 95,
+            "high": 113.99,
+            "low": 80.3,
+            "close": 113.85,
+            "volume": 14187500,
+            "adjclose": 113.85
+        },
+        "1675227600": {
+            "date": "01-02-2023",
+            "date_utc": 1675227600,
+            "open": 113.21,
+            "high": 126.37,
+            "low": 97.48,
+            "close": 118.8,
+            "volume": 13316300,
+            "adjclose": 118.8
+        },
+        "1682913600": {
+            "date": "01-05-2023",
+            "date_utc": 1682913600,
+            "open": 118.14,
+            "high": 141.91,
+            "low": 108.75,
+            "close": 138.75,
+            "volume": 11716600,
+            "adjclose": 138.75
+        },
+        "1690862400": {
+            "date": "01-08-2023",
+            "date_utc": 1690862400,
+            "open": 136.46,
+            "high": 140.28,
+            "low": 84.16,
+            "close": 94.51,
+            "volume": 12533700,
+            "adjclose": 94.51
+        },
+        "1698811200": {
+            "date": "01-11-2023",
+            "date_utc": 1698811200,
+            "open": 94.08,
+            "high": 136.89,
+            "low": 91.46,
+            "close": 118.01,
+            "volume": 11893400,
+            "adjclose": 118.01
+        },
+        "1706763600": {
+            "date": "01-02-2024",
+            "date_utc": 1706763600,
+            "open": 119.44,
+            "high": 130.75,
+            "low": 89.73,
+            "close": 89.93,
+            "volume": 13845400,
+            "adjclose": 89.93
+        },
+        "1714536000": {
+            "date": "01-05-2024",
+            "date_utc": 1714536000,
+            "open": 90.23,
+            "high": 120.31,
+            "low": 84,
+            "close": 115.07,
+            "volume": 15674400,
+            "adjclose": 115.07
+        },
+        "1722484800": {
+            "date": "01-08-2024",
+            "date_utc": 1722484800,
+            "open": 115.25,
+            "high": 125.83,
+            "low": 95.75,
+            "close": 101.56,
+            "volume": 11894100,
+            "adjclose": 101.56
+        },
+        "1730433600": {
+            "date": "01-11-2024",
+            "date_utc": 1730433600,
+            "open": 103.06,
+            "high": 114.56,
+            "low": 82.94,
+            "close": 89.28,
+            "volume": 12070100,
+            "adjclose": 89.28
+        },
+        "1738386000": {
+            "date": "01-02-2025",
+            "date_utc": 1738386000,
+            "open": 87.68,
+            "high": 88.61,
+            "low": 79.54,
+            "close": 80.48,
+            "volume": 2754900,
+            "adjclose": 80.48
+        },
+        "1740165814": {
+            "date": "21-02-2025",
+            "date_utc": 1740165814,
+            "open": 81.43,
+            "high": 81.57,
+            "low": 77.8,
+            "close": 77.8,
+            "volume": 167055,
+            "adjclose": 77.8
+        }
+    }
+}
