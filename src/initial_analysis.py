@@ -3,6 +3,8 @@ import os, json
 import matplotlib.pyplot as plt
 import pandas as pd
 from datetime import datetime
+import geopandas as gpd
+import matplotlib.cm as cm
 from dotenv import load_dotenv
 
     
@@ -63,7 +65,36 @@ def zillow():
 
 # historical flood data
 def flood_data():
-    pass
+
+    df = pd.read_excel('src/FloodArchive.xlsx', engine='openpyxl')
+    print(df.head())
+
+    gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df['long'], df['lat']))
+    norm = plt.Normalize(vmin=df['Severity'].min(), vmax=df['Severity'].max())
+    cmap = cm.get_cmap('coolwarm')
+
+    # Plot the map
+    url = "https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip"
+
+    world = gpd.read_file(url)
+
+    fig, ax = plt.subplots(figsize=(12, 8))
+    world.plot(ax=ax, color='lightgrey')
+    gdf.plot(ax=ax, color=cmap(norm(gdf['Severity'])), marker='o', markersize=50)
+
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    fig.colorbar(sm, ax=ax, label='Flood Severity')
+
+    # Add titles and labels
+    plt.title("Flood Locations (1985-2016)", fontsize=15)
+    plt.xlabel("Longitude")
+    plt.ylabel("Latitude")
+
+    # Show the plot
+    plt.show()
+
+
 
 # use this to eventualy predict natural disasters
 def weather_data():
@@ -72,6 +103,10 @@ def weather_data():
 def main():
     print("---YAHOO FINANCE DATA---\n")
     yahoo_api()
+    print("------------------------\n")
+
+    print("------FLOOD DATA-------\n")
+    flood_data()
     print("------------------------\n")
 
 
