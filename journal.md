@@ -1,4 +1,5 @@
 
+## **Week 2/17 - 2/23**
 ## 2/21/2025, Melina Garza
 - Collecting data and doing an initial analysis of it. Focusing on real-estate sector initially.
 - Data found: 
@@ -17,3 +18,31 @@
 - Drew diagram mapping our initial hypothesis/abstract
 
 <img src="./etc/abstract_diagram.png" alt="drawing" width="700"/>
+
+
+## **Week 2/24 - 3/2**
+## 2/28/2025, Melina Garza
+This week's focus is exploring different weather prediction methods and natural disaster prediction methods. Also took a snapshot of the weather data and exploring how to use Google Cloud to run models.
+
+**Weather Data:**
+
+Columns
+<img src="./etc/weather_data_columns.png" alt="drawing" width="500"/>
+<img src="./etc/weather_data_snapshot_example.png" alt="drawing" width="500"/>
+
+
+**Weather Prediction Methods:**
+
+Going to test these out for predicting rainfall (eventually use to predict floods):
+
+1.  ARIMA (AutoRegressive Integrated Moving Average)
+    - for short-term predicitons(daily/weekly)
+
+2. LSTM 
+    - for long-term rainfall trends/dependencies
+
+
+
+**Disaster Prediction Methods:**
+
+TBD

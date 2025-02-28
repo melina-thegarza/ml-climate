@@ -96,10 +96,6 @@ def flood_data():
 
 
 
-# use this to eventualy predict natural disasters
-def weather_data():
-    pass
-
 def main():
     print("---YAHOO FINANCE DATA---\n")
     yahoo_api()
