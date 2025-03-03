@@ -46,3 +46,16 @@ Going to test these out for predicting rainfall (eventually use to predict flood
 **Disaster Prediction Methods:**
 
 TBD
+
+## 3/2/2025, Dhwani Sreenivas
+- Focusing on 3 methods of weather forecasting, using rainfall data
+- Current kaggle dataset's temporal resolution: daily, spatial resolution: 56950 unique weather stations seen in "precipitation_data_test.png"
+- Kaggle dataset: 688 NaNs for precip in first 1000 entries
+- Linearly interpolated the data (not best solution)
+
+- Alternative data found:
+    - rainfall data: [hourly rainfall 1900-2014](https://www.ncdc.noaa.gov/cdo-web/search?datasetid=PRECIP_HLY#)
+    - time based resolution: available in 15 minute increments and hourly increments (hourly sample uploaded)
+    - spatial resolution: available by zip codes, cities, states, countries in the US
+
+    - aggregating this data: TBD
