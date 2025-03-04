@@ -59,3 +59,32 @@ TBD
     - spatial resolution: available by zip codes, cities, states, countries in the US
 
     - aggregating this data: TBD
+
+
+## **Week 3/3 - 3/10**
+## 3/4/2025, Melina Garza
+This week's focus is exploring different weather prediction methods using different models.
+
+**DATA**(for Massachuseets only, eventually will explore other areas): `src/precipitation_data.csv`
+
+**CODE:** `src/precip_data_cleaning.py`
+
+[COLUMNS:](https://www.ncei.noaa.gov/pub/data/cdo/documentation/PRECIP_HLY_documentation.pdf)
+`STATION,STATION_NAME,ELEVATION,LATITUDE,LONGITUDE,DATE,HPCP,Measurement Flag,Quality Flag`
+
+**HPCP:** The amount of precipitation recorded at the station for the hour ending at the
+time specified for DATE above given in hundredths of inches or tenths of millimeters
+depending on user’s specification of standard or metric units. The values 99999 means
+the data value is missing. Hours with no precipitation are not shown.
+
+**STEPS**
+- Clean the data:  `precipitation_cleaning()`
+- Create plots for each station: `plot_per_station()`
+    1. precipitation over time: raw-time series data
+    2. monthly precipitation: seasonal trends, cyclical patterns
+    3. seasonal decomposition: isolates trend, seasonal, and residual components
+    4. autocorrelation: relationships between past and future values, for models like ARIMA and LSTM
+
+- Test models: ....
+
+
