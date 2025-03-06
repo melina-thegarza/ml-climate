@@ -67,7 +67,7 @@ This week's focus is exploring different weather prediction methods using differ
 
 **DATA**(for Massachuseets only, eventually will explore other areas): `src/precipitation_data.csv`
 
-**CODE:**`src/ml_climate_precipitation_prediction.ipynb`
+**CODE:** `src/ml_climate_precipitation_prediction.ipynb`
 - note: ran code in google colab, kept on getting issues locally with libraries
 
 [COLUMNS:](https://www.ncei.noaa.gov/pub/data/cdo/documentation/PRECIP_HLY_documentation.pdf)
@@ -102,12 +102,41 @@ the data value is missing. Hours with no precipitation are not shown.
 
 * **5 RESULTS:**
     1) Without elevation as a feature
+
         <img src="./etc/modeling_without_elevation_results.png" alt="drawing" width="500"/>
        
         
     2) With elevation as a feature
+
           <img src="./etc/modeling_with_elevation_results.png" alt="drawing" width="500"/>
     
 
 * **6 Analysis/Next Steps**
-    - ...      
+
+    **Summary of Results**
+
+     Positive
+
+    - Best Performance: XGBoost achieves the lowest Mean Squared Error (MSE) for both regression tasks, outperforming Decision Trees.
+    - High Accuracy in Classification: The classification model shows very high overall accuracy (~98%). However, this is misleading due to class imbalance. The model performs well on predicting the majority class (no heavy rain) but struggles with the minority class (heavy rain).
+
+    Negative
+
+    - Elevation: Adding elevation data doesn’t significantly improve the model. In fact, it slightly worsens the performance of the Decision Tree model.
+    - Heavy Rain Prediction Performance:
+        - Low Recall Without Elevation: Recall for heavy rain (class 1) is very low (~8%), meaning the model misses most heavy rain events. This is a critical issue for practical prediction. Precision for class 1 is also low (~31%), suggesting that when the model predicts heavy rain, it is often incorrect.
+        - Low Recall With Elevation: The addition of elevation does not significantly improve the recall for heavy rain, and the model still fails to identify most heavy rain events.
+        
+
+    **Next Steps**
+
+    Address Class Imbalance:
+
+    - **Resampling**: Use SMOTE or random oversampling to balance the training set by increasing heavy rain examples, helping the model better learn the minority class.
+    - **Class Weights**: Adjust XGBoost’s `scale_pos_weight` parameter to give more importance to the minority class (heavy rain).
+    - **Threshold Adjustment**: Lower the classification threshold for heavy rain to improve recall, at the cost of higher false positives.
+
+    More Modeling Techniques:
+
+    - **Neural Networks**: Try deep learning models like (multi-layer perceptrons) MLPs or LSTMs to capture complex temporal patterns in precipitation data.
+    - **Ensemble Methods**: Explore Random Forests or LightGBM for more robust, accurate models that can capture complex relationships.
