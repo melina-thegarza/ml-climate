@@ -67,7 +67,8 @@ This week's focus is exploring different weather prediction methods using differ
 
 **DATA**(for Massachuseets only, eventually will explore other areas): `src/precipitation_data.csv`
 
-**CODE:** `src/precip_data_cleaning.py`
+**CODE:**`src/ml_climate_precipitation_prediction.ipynb`
+- note: ran code in google colab, kept on getting issues locally with libraries
 
 [COLUMNS:](https://www.ncei.noaa.gov/pub/data/cdo/documentation/PRECIP_HLY_documentation.pdf)
 `STATION,STATION_NAME,ELEVATION,LATITUDE,LONGITUDE,DATE,HPCP,Measurement Flag,Quality Flag`
@@ -78,13 +79,35 @@ depending on user’s specification of standard or metric units. The values 9999
 the data value is missing. Hours with no precipitation are not shown.
 
 **STEPS**
-- Clean the data:  `precipitation_cleaning()`
-- Create plots for each station: `plot_per_station()`
-    1. precipitation over time: raw-time series data
-    2. monthly precipitation: seasonal trends, cyclical patterns
-    3. seasonal decomposition: isolates trend, seasonal, and residual components
-    4. autocorrelation: relationships between past and future values, for models like ARIMA and LSTM
+* **1  Clean the data:  `preprocess_for_ml()`**
+* 2   Create plots for each station(for visualiaztion of data, commented out when running entire pipeline): `plot_per_station()`
 
-- Test models: ....
+    - 1.  precipitation over time: raw-time series data
+    - 2. monthly precipitation: seasonal trends, cyclical patterns
+    - 3. seasonal decomposition: isolates trend, seasonal, and residual components
+    - 4. autocorrelation: relationships between past and future values, for models like ARIMA and LSTM
+
+    Example for Blue Hill LCD MA Station:
+
+    <img src="./etc/precip_data_ex_overview_graphs.png" alt="drawing" width="500"/>
+    <img src="./etc/autocorrelation_precip_data_ex.png" alt="drawing" width="500"/>
+    
+
+* **3 Lag Features:** capture temporal dependencies(past values of a variable used as input features to predict future values): `add_lag_features()`
+
+* **4 Modeling**
+    - **Regression for Precipitation Prediction**: Decision Trees & XGBoost Models are used to predict the amount of precipitation
+    - **Classification**: binary classification to predict whether the precipitaiton exceeds a certain threshold(e.g. 0.3 inches), indicating heavy rain
 
 
+* **5 RESULTS:**
+    1) Without elevation as a feature
+        <img src="./etc/modeling_without_elevation_results.png" alt="drawing" width="500"/>
+       
+        
+    2) With elevation as a feature
+          <img src="./etc/modeling_with_elevation_results.png" alt="drawing" width="500"/>
+    
+
+* **6 Analysis/Next Steps**
+    - ...      
