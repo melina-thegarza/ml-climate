@@ -61,7 +61,7 @@ TBD
     - aggregating this data: TBD
 
 
-## **Week 3/3 - 3/10**
+## **Week 3/3 - 3/9**
 ## 3/4/2025, Melina Garza
 This week's focus is exploring different weather prediction methods using different models.
 
@@ -140,3 +140,66 @@ the data value is missing. Hours with no precipitation are not shown.
 
     - **Neural Networks**: Try deep learning models like (multi-layer perceptrons) MLPs or LSTMs to capture complex temporal patterns in precipitation data.
     - **Ensemble Methods**: Explore Random Forests or LightGBM for more robust, accurate models that can capture complex relationships.
+
+
+## **Week 3/10 - 3/16**
+## 3/11/2025, Melina Garza
+
+Trying to improve precipitation prediction methods. Tried the following:
+
+Code: added to `src/ml_climate_precipitation_prediction.ipynb`
+
+
+**Resampling: SMOTE(Synthetic Minority Over-sampling Technique)** for classification XGBoost
+
+- Code: `classify_heavy_rain_xgb()`
+
+- Results:
+  <img src="./etc/smote.png" alt="drawing" width="300"/>
+  - Slight decrease in precision, but improvement in recall. Will use in future improvements.
+
+**Class weights** for classification XGBoost
+
+- Code: `classify_heavy_rain_xgb()`
+
+- Results:<img src="./etc/smote_class_weights.png" alt="drawing" width="300"/>
+
+    -   Huge decrease in precision and huge increase in recall, meaning too many false positives(correctly identifying more rain events, but falsely predicting more non-heavy rain events). Not desirable.
+
+
+**Ensemble Methods: Random Forest Classifier** 
+
+- Code: added function `classify_heavy_rain_random_forest()` 
+
+- Results:
+    - Without optimized parameters
+        - threshold: 0.3  <img src="./etc/random_forests_0.3_threshold.png" alt="drawing" width="300"/>
+        - Similar to XGBoost results, needs improvement in both precision and recall
+    - Used `GridSearchCV()` to find the best parameters:
+        ```
+        Random Forests for Heavy Rain Prediction...
+        Best hyperparameters: {'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 10, 'n_estimators': 100}
+        ```
+ 
+    - With optimized parameters
+         - threshold: 0.3  <img src="./etc/random_forests_op_0.3_threshold.png" alt="drawing" width="300"/>
+         - Better balance between recall and precision, but they both need to be much higher.
+
+
+    - Overall: not much improvement in precision for minority class(predicting heavy rain) but acheived better balance between precision and recall compared to XGBoost.
+
+
+
+**Random Forest Regressor: predicting actual continous HPCP value**
+- Code: added function `precipitation_random_forest_regressor()` 
+
+- Results
+    - Best hyperparameters found using `RandomizedSearchCV`: ```{'n_estimators': 200, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 10, 'bootstrap': True}```
+    - <img src="./etc/random_forest_regressor.png" alt="drawing" width="300"/>
+
+    - Next steps: try to improve the R-squared value, seems to struggle to predict outliers.
+
+**Finding additional dataset**
+- Find another dataset, add more features like temp., humidity, wind speed, etc.
+
+**Neural Network**
