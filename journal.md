@@ -149,24 +149,24 @@ Trying to improve precipitation prediction methods. Tried the following:
 
 Code: added to `src/ml_climate_precipitation_prediction.ipynb`
 
-
+\
 **Resampling: SMOTE(Synthetic Minority Over-sampling Technique)** for classification XGBoost
 
 - Code: `classify_heavy_rain_xgb()`
 
 - Results:
   <img src="./etc/smote.png" alt="drawing" width="300"/>
-  - Slight decrease in precision, but improvement in recall. Will use in future improvements.
+  - Slight decrease in precision, but large improvement in recall. Will consider to use in future improvements.
 
 **Class weights** for classification XGBoost
 
 - Code: `classify_heavy_rain_xgb()`
 
-- Results:<img src="./etc/smote_class_weights.png" alt="drawing" width="300"/>
+- Results:<img src="./etc/class_weights.png" alt="drawing" width="300"/>
 
     -   Huge decrease in precision and huge increase in recall, meaning too many false positives(correctly identifying more rain events, but falsely predicting more non-heavy rain events). Not desirable.
 
-
+\
 **Ensemble Methods: Random Forest Classifier** 
 
 - Code: added function `classify_heavy_rain_random_forest()` 
@@ -189,8 +189,8 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
     - Overall: not much improvement in precision for minority class(predicting heavy rain) but acheived better balance between precision and recall compared to XGBoost.
 
 
-
-**Random Forest Regressor: predicting actual continous HPCP value**
+\
+**Random Forest Regressor: predicting actual continuous HPCP value**
 - Code: added function `precipitation_random_forest_regressor()` 
 
 - Results
@@ -199,7 +199,26 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
 
     - Next steps: try to improve the R-squared value, seems to struggle to predict outliers.
 
+\
 **Finding additional dataset**
 - Find another dataset, add more features like temp., humidity, wind speed, etc.
+- Use: https://www.ncdc.noaa.gov/cdo-web/ to find data(site has been unresponsive lately)
+- Found normals hourly dataset for two MA stations in 2010(couldn't get more years nor more stations): `src/2010_weather_MA.csv`
+- Combined overlapping data from: `src/2010_weather_MA.csv` and `src/precipitation_data.csv` into `combined_weather_precipitation.csv`
+    - **New columns:([documentation](https://www.ncei.noaa.gov/data/normals-hourly/doc/NORMAL_HLY_documentation.pdf))** 
+    HLY-CLOD-PCTCLR(Clouds clear percentage),HLY-CLOD-PCTOVC(Clouds overcast percentage),HLY-DEWP-NORMAL(Dew point mean),HLY-HIDX-NORMAL(Heat index mean),HLY-TEMP-NORMAL(Temperature mean),HLY-WIND-AVGSP(Average wind speed),HLY-WIND-VCTDIR(Mean wind vector direction),HLY-WIND-VCTSPD(Mean wind vector magnitude)
 
+\
+**Testing Previous Methods with New Combined Data**
+### XGBoost (note: removed class weights)
+
+
+### Random Forest Classifier(heavy rain or not)
+
+
+
+### Random Forest Regressor(predicting actual continuous HPCP value)
+
+
+\
 **Neural Network**
