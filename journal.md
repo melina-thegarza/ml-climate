@@ -199,7 +199,11 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
 
     - Next steps: try to improve the R-squared value, seems to struggle to predict outliers.
 
-\
+
+## **Week 3/17 - 3/23**
+
+## 3/22 - Melina
+## **Testing Previous Methods with New Combined Data**
 **Finding additional dataset**
 - Find another dataset, add more features like temp., humidity, wind speed, etc.
 - Use: https://www.ncdc.noaa.gov/cdo-web/ to find data(site has been unresponsive lately)
@@ -208,17 +212,37 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
     - **New columns:([documentation](https://www.ncei.noaa.gov/data/normals-hourly/doc/NORMAL_HLY_documentation.pdf))** 
     HLY-CLOD-PCTCLR(Clouds clear percentage),HLY-CLOD-PCTOVC(Clouds overcast percentage),HLY-DEWP-NORMAL(Dew point mean),HLY-HIDX-NORMAL(Heat index mean),HLY-TEMP-NORMAL(Temperature mean),HLY-WIND-AVGSP(Average wind speed),HLY-WIND-VCTDIR(Mean wind vector direction),HLY-WIND-VCTSPD(Mean wind vector magnitude)
 
-\
-**Testing Previous Methods with New Combined Data**
-### XGBoost (note: removed class weights)
 
 
+Notes: 
+- Dataset Size: Reduced by ~89% (7,875 to 847 samples).
+- Also added  `KNNImputer(n_neighbors=5)` to handle missing values using k-nearest neighbors
+### XGBoost 
+Results
+- heavy rain(0.3 >= HPCP )
+    - <img src="etc/xgboost_new_data_0.3.png" alt="drawing" width="300"/>
+    - Precision (44%): When the model predicts heavy rain, it's now correct 44% of the time (up from 11%).
+    - F1-Score (36%): The balance between precision and recall for heavy rain prediction improved (up from 18%).
+    - Recall (31%): The model now finds 31% of all actual heavy rain events (down from 50%).
+- Overall better balance of precision and recall for heavy rain, but at the cost of finding fewer of the total heavy rain events.
+- Best f1-score(0.36) seen so far for this technique
 ### Random Forest Classifier(heavy rain or not)
-
-
+Results
+- moderate rain(0.2 HPCP)
+    - **Across the board(precision/recall), much better(48% f1-score, previous 24% f1-score with 0.3 threshold) than all previous results for this technique, however, this only predicts moderate rain(0.2 HPCP) rather than heavy rain(0.3 HPCP)**
+    - <img src=" etc/random_forest_classifier_new_data_0.2.png" alt="drawing" width="300"/>
+   
+- heavy rain(0.3 > HPCP )
+    - worse than results than the previous dataset, no improvements(only 0.12 f1-score, very poor)
+     - <img src=" etc/random_forest_classifier_new_data_0.3.png" alt="drawing" width="300"/>
 
 ### Random Forest Regressor(predicting actual continuous HPCP value)
+Results: no improvements from the previous dataset, still low R-squared value ~ 0.25
+     - <img src=" etc/random_forest_regressor_new_data.png" alt="drawing" width="200"/> 
 
 
-\
-**Neural Network**
+
+
+
+## **Neural Network**
+- to be implmented
