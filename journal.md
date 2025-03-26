@@ -243,6 +243,19 @@ Results: no improvements from the previous dataset, still low R-squared value ~ 
 
 
 
+## **Week 3/24 - 3/30**
+
+## 3/25 - Melina
 
 ## **Neural Network**
-- to be implmented
+Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
+### Larger dataset, only includes precipitation data
+-**NOT for effective for this use case of predicting heavy rain(rare occurences)**
+- Struggled to predict rare events, without just guessing randomly(50/50 chance)
+- Was guessing heavy rain for too many events that aren't
+  - <img src=" etc/neural_network_results.png" alt="drawing" width="400"/> 
+
+
+
+## Next Steps
+- Move to next portion of project: predicting housing values based on natural disaster occurrences i.e how much it effects it based on the intensity of the disaster
