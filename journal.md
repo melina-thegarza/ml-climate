@@ -230,15 +230,15 @@ Results
 Results
 - moderate rain(0.2 HPCP)
     - **Across the board(precision/recall), much better(48% f1-score, previous 24% f1-score with 0.3 threshold) than all previous results for this technique, however, this only predicts moderate rain(0.2 HPCP) rather than heavy rain(0.3 HPCP)**
-    - <img src=" etc/random_forest_classifier_new_data_0.2.png" alt="drawing" width="300"/>
+    - <img src=" ./etc/random_forest_classifier_new_data_0.2.png" alt="drawing" width="300"/>
    
 - heavy rain(0.3 > HPCP )
     - worse than results than the previous dataset, no improvements(only 0.12 f1-score, very poor)
-     - <img src=" etc/random_forest_classifier_new_data_0.3.png" alt="drawing" width="300"/>
+     - <img src=" ./etc/random_forest_classifier_new_data_0.3.png" alt="drawing" width="300"/>
 
 ### Random Forest Regressor(predicting actual continuous HPCP value)
 Results: no improvements from the previous dataset, still low R-squared value ~ 0.25
-     - <img src=" etc/random_forest_regressor_new_data.png" alt="drawing" width="200"/> 
+     - <img src=" ./etc/random_forest_regressor_new_data.png" alt="drawing" width="200"/> 
 
 
 
@@ -253,7 +253,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 -**NOT for effective for this use case of predicting heavy rain(rare occurences)**
 - Struggled to predict rare events, without just guessing randomly(50/50 chance)
 - Was guessing heavy rain for too many events that aren't
-  - <img src=" etc/neural_network_results.png" alt="drawing" width="400"/> 
+  - <img src=" ./etc/neural_network_results.png" alt="drawing" width="400"/> 
 
 
 
@@ -265,12 +265,12 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 
 1. Combine natural disaster data(i.e. historial flood data) with housing data
     -  Flood Data: `src/united_states_floods.csv`
-    <img src=" etc/flood_data.png" alt="drawing" width="400"/> 
+    <img src="./etc/flood_data.png" alt="drawing" width="400"/> 
     -> visual representation of floods: `src/flood_map.html`
-        <img src=" etc/us_flood_visual.png" alt="drawing" width="400"/> 
+        <img src="./etc/us_flood_visual.png" alt="drawing" width="300"/> 
     
     - Housing Data(filtered on zipcodes in flood data): `src/united_states_housing.csv`
- <img src=" etc/housing_data.png" alt="drawing" width="300"/> 
+ <img src="./etc/housing_data.png" alt="drawing" width="300"/> 
     
 
 
