@@ -259,3 +259,20 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 
 ## Next Steps
 - Move to next portion of project: predicting housing values based on natural disaster occurrences i.e how much it effects it based on the intensity of the disaster
+
+## **Week 3/31 - 4/6**
+## 3/31 - Melina
+
+1. Combine natural disaster data(i.e. historial flood data) with housing data
+    -  Flood Data: `src/united_states_floods.csv`
+    <img src=" etc/flood_data.png" alt="drawing" width="400"/> 
+    -> visual representation of floods: `src/flood_map.html`
+        <img src=" etc/us_flood_visual.png" alt="drawing" width="400"/> 
+    
+    - Housing Data(filtered on zipcodes in flood data): `src/united_states_housing.csv`
+ <img src=" etc/housing_data.png" alt="drawing" width="300"/> 
+    
+
+
+2. Predict how natural disasters affect housing prices using `Random Forest Regression`
+    - Code: `src/natural_disaster_housing_prediction.ipynb`
