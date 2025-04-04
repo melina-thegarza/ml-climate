@@ -264,6 +264,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 1. Combine natural disaster data(i.e. historial flood data) with housing data
     -  Flood Data: `src/united_states_floods.csv`
     <img src="./etc/flood_data.png" alt="drawing" width="400"/> 
+    
     visual representation of floods: `src/flood_map.html`
         <img src="./etc/us_flood_visual.png" alt="drawing" width="300"/> 
     
@@ -273,4 +274,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 
 
 2. Predict how natural disasters affect housing prices using `Random Forest Regression`
-    - Code: `src/natural_disaster_housing_prediction.ipynb`
+    - Code[Random Forest Regressor sector]: `src/natural_disaster_housing_prediction.ipynb`
+    Steps:
+    1. Aggregate flood data by zip code and year
+    2. See how the HPI changes based on these flood events(i.e. look at damage/severity)
