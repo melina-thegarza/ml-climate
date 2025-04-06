@@ -261,6 +261,8 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 ## **Week 3/31 - 4/6**
 ## 3/31 - Melina
 
+### Predicting housing values based on natural disaster occurrences i.e how much it effects it based on the intensity of the disaster
+
 1. Combine natural disaster data(i.e. historial flood data) with housing data
     -  Flood Data: `src/united_states_floods.csv`
     <img src="./etc/flood_data.png" alt="drawing" width="400"/> 
@@ -275,6 +277,32 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 
 2. Predict how natural disasters affect housing prices using `Random Forest Regression`
     - Code[Random Forest Regressor sector]: `src/natural_disaster_housing_prediction.ipynb`
+
     Steps:
     1. Aggregate flood data by zip code and year
     2. See how the HPI changes based on these flood events(i.e. look at damage/severity)
+
+    Results:
+    - Initially results
+        - The model's performance is poor. Predictions significantly deviate from actual HPI values, indicating that the model is not effective for predicting HPI based on the current year’s data alone.
+    ```
+        Random Forest Regressor: Predicting HPI(no past history, just current year):
+        R² score: -0.707
+        Mean Absolute Error (MAE): 167.823
+    ```
+
+    - Results with prior 10 year averages of flood data in the 3 area zipcode for each zipcode/year 
+        - The model still performs poorly. Although using past 10 years of flood data improves the predictions slightly, they still deviate considerably from actual HPI values, indicating that the model doesn't capture the relationship effectively.
+        ```
+        Random Forest Regressor: Predicting HPI(w/ past history, prior 10 year flood averages):
+        R² score: -0.603
+        Mean Absolute Error (MAE): 145.056
+
+        ```
+
+3. Improve the Random Forest Regressor(w/ past memory)
+- Ideas: 
+    - Data Transformation: Normalize or scale features for better model performance.
+    - Hyperparameter Tuning: Optimize Random Forest parameters
+
+4. Try other algorithms (e.g., XGBoost, Gradient Boosting).
