@@ -320,8 +320,24 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     **ISSUE:  Currently only have ~200 rows of data to work with, which is extremely small**
 
     Synthesizing data
-    - Methods
-    - Results
+    - Process
+
+        1. Fit Gaussian Mixture Model (GMM) by using the numeric columns (flood_count, max_severity, etc.) to fit a GMM with 3 components and generate 1000 synthetic samples based on the learned distribution.
+        2.  Then mapped synthetic data to closest real data by using pairwise_distances_argmin_min to find the closest matching rows in the original data for each synthetic sample.
+        3. Assigned zipcode and Year from the closest original data rows based on distance.
+
+        4. Merged the original and synthetic data into expanded_data, removing unnecessary columns
+
+
+    - Results(now with over 1000 rows of data)
+        - We finally have a moderate fit with R^2 score of ~0.5 and the MAE decreased by ~35 from previous results.
+        - Overall, big improvement from previous results but still not good at predicting HPI with ~40% relative error and substantial MAE.
+        ```
+        Random Forest Regressor: Predicting HPI(no past history, synthetic data):
+        R² score: 0.539
+        Mean Absolute Error (MAE): 88.939
+        Relative Error: 39.31%
+        ```
 
 
     More data
