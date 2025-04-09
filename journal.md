@@ -282,27 +282,52 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     1. Aggregate flood data by zip code and year
     2. See how the HPI changes based on these flood events(i.e. look at damage/severity)
 
+    **NOTE: UPDATED results because I was dropping unnecessary rows.**
+
     Results:
-    - Initially results
+    - Initial results(current year only)
         - The model's performance is poor. Predictions significantly deviate from actual HPI values, indicating that the model is not effective for predicting HPI based on the current year’s data alone.
-    ```
+        ```
+        Random Forest Regressor: Predicting HPI(no past  history, just current year):
+        R² score: 0.038
+        Mean Absolute Error (MAE): 129.130
+        ```
+
+3. Improve the Random Forest Regressor
+- Ideas
+
+    Scale features & hyperparameter tuning
+    - Results: Very slight improvement in the MAE(reduced by ~5) but still really poor results. We still have a very low R^2 value which means the model fits the data really poorly.
+        ```
         Random Forest Regressor: Predicting HPI(no past history, just current year):
-        R² score: -0.707
-        Mean Absolute Error (MAE): 167.823
+        R² score: 0.058
+        Mean Absolute Error (MAE): 124.704
+        ```
+    
+    Add prior 10 year averages of flood data in the 3 area zipcode for each zipcode/year 
+    - Results:
+            - The model performs even worst with a higher MAE. The R^2 value is slightly better but not anywhere close to being good.
+    ```
+        Random Forest Regressor: Predicting HPI(w/ past history, prior 10 year flood averages):
+    R² score: 0.120
+    Mean Absolute Error (MAE): 131.857
     ```
 
-    - Results with prior 10 year averages of flood data in the 3 area zipcode for each zipcode/year 
-        - The model still performs poorly. Although using past 10 years of flood data improves the predictions slightly, they still deviate considerably from actual HPI values, indicating that the model doesn't capture the relationship effectively.
-        ```
-        Random Forest Regressor: Predicting HPI(w/ past history, prior 10 year flood averages):
-        R² score: -0.603
-        Mean Absolute Error (MAE): 145.056
+## **Week 4/7 - 4/13**
+## 4/9 - Melina
+4. Synthesize Data/Find More Data
 
-        ```
+    **ISSUE:  Currently only have ~200 rows of data to work with, which is extremely small**
 
-3. Improve the Random Forest Regressor(w/ past memory)
-- Ideas: 
-    - Data Transformation: Normalize or scale features for better model performance.
-    - Hyperparameter Tuning: Optimize Random Forest parameters
+    Synthesizing data
+    - Methods
+    - Results
 
-4. Try other algorithms (e.g., XGBoost, Gradient Boosting).
+
+    More data
+    ...
+
+    
+
+
+5. Try other algorithms (e.g., XGBoost, Gradient Boosting).
