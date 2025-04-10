@@ -312,6 +312,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     R² score: 0.120
     Mean Absolute Error (MAE): 131.857
     ```
+    - Also tried 5 year prior averages and had similar results.
 
 ## **Week 4/7 - 4/13**
 ## 4/9 - Melina
@@ -330,6 +331,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 
 
     - Results(now with over 1000 rows of data)
+        With no past history:
         - We finally have a moderate fit with R^2 score of ~0.5 and the MAE decreased by ~35 from previous results.
         - Overall, big improvement from previous results but still not good at predicting HPI with ~40% relative error and substantial MAE.
         ```
@@ -337,6 +339,14 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         R² score: 0.539
         Mean Absolute Error (MAE): 88.939
         Relative Error: 39.31%
+        ```
+        With past history:
+        - Not better than just considering current year flood data to predict HPI, but a lower MAE compared to non-synthesized data with history. Still really poor performance.
+        ```
+        Random Forest Regressor: Predicting HPI(w/ past history, prior 10 year flood averages, synthetic data):
+        R² score: 0.112
+        Mean Absolute Error (MAE): 115.054
+        Relative Error: 48.46%
         ```
 
 
