@@ -291,6 +291,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         Random Forest Regressor: Predicting HPI(no past  history, just current year):
         R² score: 0.038
         Mean Absolute Error (MAE): 129.130
+        Relative Error: 49.68%
         ```
 
 3. Improve the Random Forest Regressor
@@ -302,6 +303,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         Random Forest Regressor: Predicting HPI(no past history, just current year):
         R² score: 0.058
         Mean Absolute Error (MAE): 124.704
+        Relative Error: 47.98%
         ```
     
     Add prior 10 year averages of flood data in the 3 area zipcode for each zipcode/year 
@@ -311,6 +313,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         Random Forest Regressor: Predicting HPI(w/ past history, prior 10 year flood averages):
     R² score: 0.120
     Mean Absolute Error (MAE): 131.857
+    Relative Error: 49.43%
     ```
     - Also tried 5 year prior averages and had similar results.
 
@@ -349,11 +352,54 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         Relative Error: 48.46%
         ```
 
+## **Week 4/14 - 4/20**
+## 4/14 - Melina
 
-    More data
-    ...
 
+5. Try other algorithms (e.g., TabPFNv2, XGBoost, Gradient Boosting).
+
+    **`Tabular Prior-data Fitted Network v2 (TabPFN v2)`**
     
+    Why 
+    - exceptional generalization capabilities on small- to medium-scale tasks
+    - foundation model for tabular data that leverages prior-data based learning to achieve strong performance on small tabular datasets without requiring task-specific training.
+
+    Real Data Results
+    - Current Year Data
+        ```
+        TabPFNRegressor (current year only, real data)
+        Mean Absolute Error (MAE): 114.973
+        R² Score: 0.0024927002698592604
+        Relative Error: 46.99%
+        ```
+        - Similar poor results as Random Forest Regressor, slightly lower MAE(~10 decrease) but relative error is still very high.
+    - Prior 10 year averages
+        ```
+        TabPFNRegressor (including 10 year prior averages, real data)
+        Mean Absolute Error (MAE): 126.754
+        R² Score: 0.05903686284911025
+        Relative Error: 51.29%
+        ```
+        - Similar poor results as Random Forest Regressor, slightly lower MAE(~5 decrease) but relative error is still very high.
 
 
-5. Try other algorithms (e.g., XGBoost, Gradient Boosting).
+    Synthetic Data Results(~800 rows of data generated using GMM)
+    - Current Year Data
+        ```
+        Mean Absolute Error (MAE): 85.153
+        R² Score: 0.4012760482025821
+        Relative Error: 37.35%
+        ```
+        - Slightly better performance than the `Random Forest Regressor` for MAE/relative error but worse R^2 score. Still performing very poorly for predicting HPI values.
+        - Best performance so far in terms of relative error/MAE.
+
+    - Prior 10 year averages
+        ```
+        TabPFNRegressor (prior 10 year averages, synthetic data)
+        Mean Absolute Error (MAE): 113.451
+        R² Score: 0.17103261874091413
+        Relative Error: 49.87%
+        ```
+        - Similar performance to `Random Forest Regressor` no significant improvements. Relative error is very high.
+
+
