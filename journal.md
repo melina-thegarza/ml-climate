@@ -402,4 +402,61 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         ```
         - Similar performance to `Random Forest Regressor` no significant improvements. Relative error is very high.
 
+    ## 4/16 - Melina
+
+    **CatBoost Regressor**
+    
+    Why 
+    - performs well with minimal tuning, especially on smaller, tabular datasets
+
+    How
+    - uses gradient boosting on decision trees
+
+    Real Data Results
+    - Current Year Data
+        ```
+        CatBoost Regressor (no past history, real data):
+        R² score: 0.004
+        Mean Absolute Error (MAE): 123.691
+        Relative Error: 47.59%
+        
+        Baseline MAE: 132.51, Baseline R²: -0.02
+        ```
+        - Similar results to TabPFN, only slightly outperforms a naive average prediction, but the signal is still weak due to limited data size and variability.
+    - Prior 10 year averages
+        ```
+        CatBoost Regressor(prior 10 year averages history, real data):
+        R² score: 0.159
+        Mean Absolute Error (MAE): 131.561
+        Relative Error: 49.31%
+       
+        Baseline MAE: 139.57, Baseline R²: -0.03
+        ```
+        - Almost identical results as TabPFN, no improvement. Consistent pattern with this historical, lag data performing poorly.
+
+
+    Synthetic Data Results(~800 rows of data generated using GMM)
+    - Current Year Data
+        ```
+       CatBoost Regressor (no past history, synthetic data):
+        R² score: 0.484
+        Mean Absolute Error (MAE): 83.217
+        Relative Error: 37.17%
+        
+        Baseline MAE: 106.62, Baseline R²: -0.00
+        ```
+        - **Similar/Slightly better performance as previous best model & data combination**(TabPFN & synthetic data). The synthetic data helps CatBoost uncover patterns better, achieving solid generalization and significantly reducing prediction error.
+        
+
+    - Prior 10 year averages
+        ```
+        CatBoost Regressor(prior 10 year averages history, synthetic data):
+        R² score: 0.179
+        Mean Absolute Error (MAE): 111.420
+        Relative Error: 48.81%
+        
+        Baseline MAE: 127.51, Baseline R²: -0.00
+        ```
+        - Extremely similar results to TabPFN, only slightly outperforms a naive average prediction and error is still very high.
+
 
