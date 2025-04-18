@@ -356,7 +356,7 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 ## 4/14 - Melina
 
 
-5. Try other algorithms (e.g., TabPFNv2, XGBoost, Gradient Boosting).
+5. Try other algorithms (e.g., TabPFNv2, CatBoost).
 
     **`Tabular Prior-data Fitted Network v2 (TabPFN v2)`**
     
@@ -460,3 +460,45 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         - Extremely similar results to TabPFN, only slightly outperforms a naive average prediction and error is still very high.
 
 
+6. Deeper analysis of our best results so far for HPI(housing) prediction
+
+    **TabPFN**
+    
+    Feature Importance
+      <img src="./etc/tabpfn_feature_importance.png" alt="drawing" width="300"/> 
+    ```
+    median_dead: 25.1987
+    median_duration: 8.5578
+    median_displaced: 8.1420
+    median_area: 1.0354
+    max_severity: 0.6749
+    flood_count: 0.1369
+    ```
+   
+    - Analysis: The `TabPFN Regressor` strongly emphasizes the median human impact of floods (median_dead, median_displaced) and their typical duration as key drivers of HPI, while frequency (flood_count) and extreme severity (max_severity) appear to have a much lesser influence in this model. This suggests that the consistent consequences of flooding events are more predictive of housing prices than their mere occurrence or isolated extreme instances.
+
+    Residual analysis plot (actual vs predicted HPI)
+    <img src="./etc/tabpfn_residual_plot.png" alt="drawing" width="300"/> 
+      - Analysis: The `TabPFN Regressor` shows reasonable accuracy for lower HPI values but exhibits increasing prediction error (heteroscedasticity) and a tendency to underpredict in the mid-range, with limited reliable performance observed for very high HPI values. This suggests the model struggles to generalize effectively across the entire spectrum of housing prices in the dataset.
+
+    **CatBoost**
+
+    Feature Importance/SHAP Values
+    ```
+    Feature Importances:
+    median_dead: 22.0923
+    median_displaced: 6.2072
+    median_duration: 5.7951
+    median_area: 5.6781
+    max_severity: 5.1088
+    flood_count: 1.1935
+     ```
+    <img src="./etc/catboost_feature_importance.png" alt="drawing" width="300"/> 
+    <img src="./etc/catboost_shap_values.png" alt="drawing" width="300"/> 
+
+    - Analysis: High `median_dead`, `max_severity`, and `median_displaced` generally increase the predicted HPI, while high `median_area` surprisingly tends to decrease it(most likely because the area of coverage is larger and less concentrated in the precise zipcode). `median_duration` also positively impacts predictions when its value is high. `flood_count` has a minimal and inconsistent effect on the predicted HPI.
+
+    Residual analysis plot (actual vs predicted HPI)
+    <img src="./etc/catboost_residual_plot.png" alt="drawing" width="300"/> 
+
+    - Analysis: The `CatBoost Regressor` shows reasonable prediction accuracy for lower HPI values, but exhibits increasing scatter and a tendency to underpredict as the actual HPI rises, indicating larger errors and potential bias at higher price points. Similar to the TabPFN model, the model struggles to consistently predict across the entire range of HPI values.
