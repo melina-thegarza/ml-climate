@@ -502,3 +502,12 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     <img src="./etc/catboost_residual_plot.png" alt="drawing" width="300"/> 
 
     - Analysis: The `CatBoost Regressor` shows reasonable prediction accuracy for lower HPI values, but exhibits increasing scatter and a tendency to underpredict as the actual HPI rises, indicating larger errors and potential bias at higher price points. Similar to the TabPFN model, the model struggles to consistently predict across the entire range of HPI values.
+
+    ## 4/16 - Dhwani
+    Tried to predict housing prices using a different type of natural disaster, tornadoes. Leveraged US Tornado Dataset, 1955-2021 from Kaggle: [Tornado Data](https://www.kaggle.com/datasets/danbraswell/us-tornado-dataset-1950-2021). This data was grouped by state, so I mapped the zipcodes from the housing data to states using uszips.csv. Catboost gave mediocre results: 
+    R² score: 0.340
+    Mean Absolute Error (MAE): 51.346
+    Relative Error: 26.12%
+
+    Baseline: 
+    Baseline MAE: 61.71, Baseline R²: -0.00
