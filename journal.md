@@ -6,7 +6,7 @@
     - financial/stock data: [Yahoo Finance API](https://rapidapi.com/sparior/api/yahoo-finance15)
 
     - housing data: [Zillow Housing Data](https://www.zillow.com/research/data/)
-    - flood data: [Flood events 1985-2016](https://floodobservatory.colorado.edu/Archives/index.html)
+    - flood data: [Flood events 1985-2021](https://floodobservatory.colorado.edu/Archives/index.html)
     - weather data: [NCEI US Climate Data (1992-2021)](https://www.kaggle.com/datasets/nachiketkamod/weather-dataset-us/data)
 - Started programmtic analysis in `src/initial_analysis.py`
 
