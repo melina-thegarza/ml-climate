@@ -101,6 +101,8 @@ the data value is missing. Hours with no precipitation are not shown.
 
 
 * **5 RESULTS:**
+    - **NOTE: threshold for classification set at 0.5(some of the results were updated at the end because the threshold was not uniformed throughout the sections)**
+
     1) Without elevation as a feature
 
         <img src="./etc/modeling_without_elevation_results.png" alt="drawing" width="500"/>
@@ -152,19 +154,93 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
 \
 **Resampling: SMOTE(Synthetic Minority Over-sampling Technique)** for classification XGBoost
 
-- Code: `classify_heavy_rain_xgb()`
+- Code: `classify_heavy_rain_xgb(with_smote=True)`
 
 - Results:
-  <img src="./etc/smote.png" alt="drawing" width="300"/>
-  - Slight decrease in precision, but large improvement in recall. Will consider to use in future improvements.
+```
+MODELING WITHOUT ELEVATION
+Training Regression Models...
+Decision Tree Mean Squared Error: 0.009565545367074326
+XGBoost Mean Squared Error: 0.005760223499990786
+
+Training XGBoost Classifier for Heavy Rain Prediction...
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99      7742
+           1       0.24      0.26      0.25       133
+
+    accuracy                           0.97      7875
+   macro avg       0.62      0.62      0.62      7875
+weighted avg       0.97      0.97      0.97      7875
+
+------------------------
+```
+```
+MODELING WITH ELEVATION
+Training Regression Model...
+Decision Tree Mean Squared Error: 0.010358998294265712
+XGBoost Mean Squared Error: 0.00567830522404923
+
+
+Training XGBoost Classifier for Heavy Rain Prediction...
+              precision    recall  f1-score   support
+
+           0       0.99      0.97      0.98      7742
+           1       0.14      0.34      0.20       133
+
+    accuracy                           0.96      7875
+   macro avg       0.57      0.65      0.59      7875
+weighted avg       0.97      0.96      0.96      7875
+
+------------------------
+```
+  - Slight decrease in precision, but large improvement in recall, leading to a higher f1-score for classification with and without elevation feature. Will consider to use in future improvements.
 
 **Class weights** for classification XGBoost
 
-- Code: `classify_heavy_rain_xgb()`
+- Code: `classify_heavy_rain_xgb(with_class_weights=True)`
 
-- Results:<img src="./etc/class_weights.png" alt="drawing" width="300"/>
+- Results:
+```
+MODELING WITHOUT ELEVATION
+Training Regression Models...
+Decision Tree Mean Squared Error: 0.009565545367074326
+XGBoost Mean Squared Error: 0.005760223499990786
 
-    -   Huge decrease in precision and huge increase in recall, meaning too many false positives(correctly identifying more rain events, but falsely predicting more non-heavy rain events). Not desirable.
+
+Training XGBoost Classifier for Heavy Rain Prediction...
+              precision    recall  f1-score   support
+
+           0       0.99      0.94      0.97      7742
+           1       0.11      0.39      0.17       133
+
+    accuracy                           0.93      7875
+   macro avg       0.55      0.67      0.57      7875
+weighted avg       0.97      0.93      0.95      7875
+
+------------------------
+```
+```
+MODELING WITH ELEVATION
+Training Regression Model...
+Decision Tree Mean Squared Error: 0.010358998294265712
+XGBoost Mean Squared Error: 0.00567830522404923
+
+
+Training XGBoost Classifier for Heavy Rain Prediction...
+              precision    recall  f1-score   support
+
+           0       0.99      0.94      0.96      7742
+           1       0.11      0.41      0.17       133
+
+    accuracy                           0.93      7875
+   macro avg       0.55      0.67      0.57      7875
+weighted avg       0.97      0.93      0.95      7875
+
+------------------------
+```
+
+    -  Slight decrease in precision and highest recall seen so far, meaning too many false positives(correctly identifying more rain events, but falsely predicting more non-heavy rain events). Not desirable for our project(leads to low f1-score, similar to f1-score we had before using SMOTE).
 
 \
 **Ensemble Methods: Random Forest Classifier** 
@@ -173,8 +249,35 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
 
 - Results:
     - Without optimized parameters
-        - threshold: 0.3  <img src="./etc/random_forests_0.3_threshold.png" alt="drawing" width="300"/>
-        - Similar to XGBoost results, needs improvement in both precision and recall
+        - threshold: 0.3  
+        ```
+        MODELING WITHOUT ELEVATION
+        Random Forests for Heavy Rain Prediction...
+                    precision    recall  f1-score   support
+
+                0       0.98      1.00      0.99      7742
+                1       0.14      0.04      0.06       133
+
+            accuracy                           0.98      7875
+            macro avg       0.56      0.52      0.52      7875
+            weighted avg       0.97      0.98      0.97      7875
+
+        ------------------------
+        ```
+        ```
+        MODELING WITH ELEVATION
+        Random Forests for Heavy Rain Prediction...
+                    precision    recall  f1-score   support
+
+                0       0.98      0.99      0.99      7742
+                1       0.10      0.06      0.08       133
+
+            accuracy                           0.98      7875
+            macro avg       0.54      0.53      0.53      7875
+            weighted avg       0.97      0.98      0.97      7875
+        ```
+        - Worst results seen so far(in comparasion to XGBoost results), super low f1-score. Will need to optimize parameters to get any sort of usable results.
+
     - Used `GridSearchCV()` to find the best parameters:
         ```
         Random Forests for Heavy Rain Prediction...
@@ -186,7 +289,7 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
          - Better balance between recall and precision, but they both need to be much higher.
 
 
-    - Overall: not much improvement in precision for minority class(predicting heavy rain) but acheived better balance between precision and recall compared to XGBoost.
+        - **Overall: not much improvement** in precision for minority class(predicting heavy rain), acheived similar balance between precision and recall as XGBoost did. Both models had a f1-score between 0.23 to 0.25 when using SMOTE and optimized parameters.
 
 
 \
@@ -196,8 +299,9 @@ Code: added to `src/ml_climate_precipitation_prediction.ipynb`
 - Results
     - Best hyperparameters found using `RandomizedSearchCV`: ```{'n_estimators': 200, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 10, 'bootstrap': True}```
     - <img src="./etc/random_forest_regressor.png" alt="drawing" width="300"/>
-
+    - As the HPCP value increases the model struggles to identify these higher values, tends to underestimate.
     - Next steps: try to improve the R-squared value, seems to struggle to predict outliers.
+
 
 
 ## **Week 3/17 - 3/23**
