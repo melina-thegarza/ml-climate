@@ -340,13 +340,26 @@ With elevation(using class weights, no SMOTE)
 - **Best f1-score(0.36) seen so far for this model & techniques**
 ### **Random Forest Classifier(heavy rain or not)**
 Results
+
+Without elevation
 - moderate rain(0.2 HPCP)
-    - **Across the board(precision/recall), much better(48% f1-score, previous 24% f1-score with 0.3 threshold) than all previous results for this technique, however, this only predicts moderate rain(0.2 HPCP) rather than heavy rain(0.3 HPCP)**
-    - <img src="./etc/random_forest_classifier_new_data_0.2.png" alt="drawing" width="300"/>
+    - **Better precision/recall than previous experiments with model & no elevation (0.45 f1-score, previous 0.24 f1-score with 0.3 threshold) than all previous results for this technique, however, this only predicts moderate rain(0.2 HPCP) rather than heavy rain(0.3 HPCP)**
+    - <img src="./etc/random_forest_classifier_new_data_0.2_no_elevation.png" alt="drawing" width="300"/>
    
 - heavy rain(0.3 > HPCP )
     - worse than results than the previous dataset, no improvements(only 0.12 f1-score, very poor)
-     - <img src="./etc/random_forest_classifier_new_data_0.3.png" alt="drawing" width="300"/>
+     <img src="./etc/random_forest_classifier_new_data_0.3_no_elevation.png" alt="drawing" width="300"/>
+
+
+
+With elevation
+- moderate rain(0.2 HPCP)
+    - **Both precision & recall much better(0.46 f1-score, previous best: 0.24 f1-score with 0.3 threshold) than all previous results for this technique, however, this only predicts moderate rain(0.2 HPCP) rather than heavy rain(0.3 HPCP)**
+    - <img src="./etc/random_forest_classifier_new_data_0.2_elevation.png" alt="drawing" width="300"/>
+   
+- heavy rain(0.3 > HPCP )
+    - worse than results than the previous dataset, no improvements(only 0.12 f1-score, very poor)
+     - <img src="./etc/random_forest_classifier_new_data_0.3_elevation.png" alt="drawing" width="300"/>
 
 ### **Random Forest Regressor(predicting actual continuous HPCP value)**
 Results: no improvements from the previous dataset, still low R-squared value ~ 0.25
