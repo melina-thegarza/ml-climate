@@ -1,4 +1,4 @@
 # ml-climate
-- add secrets to .env
-- create virtual env
+## how to run project
+- create virtual env: `pipenv shell`
 - install dependencies `pip install -r requirement.txt`

@@ -511,3 +511,8 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 
     Baseline: 
     Baseline MAE: 61.71, Baseline R²: -0.00
+
+## **Week 4/28 - 5/4**
+## 5/1 - Melina
+
+## **Summary of code & data**
