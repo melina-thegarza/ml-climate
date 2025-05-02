@@ -321,16 +321,24 @@ weighted avg       0.97      0.93      0.95      7875
 Notes: 
 - Dataset Size: Reduced by ~89% (7,875 to 847 samples).
 - Also added  `KNNImputer(n_neighbors=5)` to handle missing values using k-nearest neighbors
-### XGBoost 
+### **XGBoost Classifier**
 Results
 - heavy rain(0.3 >= HPCP )
-    - <img src="etc/xgboost_new_data_0.3.png" alt="drawing" width="300"/>
-    - Precision (44%): When the model predicts heavy rain, it's now correct 44% of the time (up from 11%).
-    - F1-Score (36%): The balance between precision and recall for heavy rain prediction improved (up from 18%).
-    - Recall (31%): The model now finds 31% of all actual heavy rain events (down from 50%).
+
+Without elevation(using class weights, no SMOTE)
+ <img src="etc/xgboost_new_data_0.3_no_elevation.png" alt="drawing" width="300"/>
+- **Best f1-score(0.31) seen so far for this model & techniques**
+
+With elevation(using class weights, no SMOTE)
+
+ <img src="etc/xgboost_new_data_0.3_elevation.png" alt="drawing" width="300"/>
+
+- Precision (44%): When the model predicts heavy rain, it's now correct 44% of the time (up from 11%).
+- F1-Score (36%): The balance between precision and recall for heavy rain prediction improved (up from 18%).
+- Recall (31%): The model now finds 31% of all actual heavy rain events (down from 50%).
 - Overall better balance of precision and recall for heavy rain, but at the cost of finding fewer of the total heavy rain events.
-- Best f1-score(0.36) seen so far for this technique
-### Random Forest Classifier(heavy rain or not)
+- **Best f1-score(0.36) seen so far for this model & techniques**
+### **Random Forest Classifier(heavy rain or not)**
 Results
 - moderate rain(0.2 HPCP)
     - **Across the board(precision/recall), much better(48% f1-score, previous 24% f1-score with 0.3 threshold) than all previous results for this technique, however, this only predicts moderate rain(0.2 HPCP) rather than heavy rain(0.3 HPCP)**
@@ -340,7 +348,7 @@ Results
     - worse than results than the previous dataset, no improvements(only 0.12 f1-score, very poor)
      - <img src="./etc/random_forest_classifier_new_data_0.3.png" alt="drawing" width="300"/>
 
-### Random Forest Regressor(predicting actual continuous HPCP value)
+### **Random Forest Regressor(predicting actual continuous HPCP value)**
 Results: no improvements from the previous dataset, still low R-squared value ~ 0.25
      - <img src="./etc/random_forest_regressor_new_data.png" alt="drawing" width="300"/> 
 
