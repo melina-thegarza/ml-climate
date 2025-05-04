@@ -418,6 +418,9 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         Mean Absolute Error (MAE): 129.130
         Relative Error: 49.68%
         ```
+        ```
+        Baseline MAE: 132.51, Baseline R²: -0.02
+        ```
 
 3. Improve the Random Forest Regressor
 - Ideas
@@ -430,6 +433,9 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         Mean Absolute Error (MAE): 124.704
         Relative Error: 47.98%
         ```
+        ```
+        Baseline MAE: 132.51, Baseline R²: -0.02
+        ```
     
     Add prior 10 year averages of flood data in the 3 area zipcode for each zipcode/year 
     - Results:
@@ -439,6 +445,9 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     R² score: 0.120
     Mean Absolute Error (MAE): 131.857
     Relative Error: 49.43%
+    ```
+    ```
+    Baseline MAE: 139.57, Baseline R²: -0.03
     ```
     - Also tried 5 year prior averages and had similar results.
 
@@ -468,6 +477,9 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         Mean Absolute Error (MAE): 88.939
         Relative Error: 39.31%
         ```
+        ```
+        Baseline MAE: 111.92, Baseline R²: -0.00
+        ```
         With past history:
         - Not better than just considering current year flood data to predict HPI, but a lower MAE compared to non-synthesized data with history. Still really poor performance.
         ```
@@ -475,6 +487,9 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         R² score: 0.112
         Mean Absolute Error (MAE): 115.054
         Relative Error: 48.46%
+        ```
+        ```
+        Baseline MAE: 122.00, Baseline R²: -0.00
         ```
 
 ## **Week 4/14 - 4/20**
@@ -497,6 +512,9 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         R² Score: 0.0024927002698592604
         Relative Error: 46.99%
         ```
+        ```
+        Baseline MAE: 113.08, Baseline R²: -0.01
+        ```
         - Similar poor results as Random Forest Regressor, slightly lower MAE(~10 decrease) but relative error is still very high.
     - Prior 10 year averages
         ```
@@ -505,15 +523,21 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
         R² Score: 0.05903686284911025
         Relative Error: 51.29%
         ```
+        ```
+        Baseline MAE: 116.14, Baseline R²: -0.02
+        ```
         - Similar poor results as Random Forest Regressor, slightly lower MAE(~5 decrease) but relative error is still very high.
 
 
     Synthetic Data Results(~800 rows of data generated using GMM)
     - Current Year Data
         ```
-        Mean Absolute Error (MAE): 85.153
-        R² Score: 0.4012760482025821
-        Relative Error: 37.35%
+        Mean Absolute Error (MAE): 82.009
+        R² Score: 0.4245781246382261
+        Relative Error: 35.98%
+        ```
+        ```
+        Baseline MAE: 109.53, Baseline R²: -0.00
         ```
         - Slightly better performance than the `Random Forest Regressor` for MAE/relative error but worse R^2 score. Still performing very poorly for predicting HPI values.
         - Best performance so far in terms of relative error/MAE.
@@ -521,9 +545,12 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     - Prior 10 year averages
         ```
         TabPFNRegressor (prior 10 year averages, synthetic data)
-        Mean Absolute Error (MAE): 113.451
-        R² Score: 0.17103261874091413
-        Relative Error: 49.87%
+        Mean Absolute Error (MAE): 114.331
+        R² Score: 0.1793396500369392
+        Relative Error: 50.31%
+        ```
+        ```
+        Baseline MAE: 129.05, Baseline R²: -0.00
         ```
         - Similar performance to `Random Forest Regressor` no significant improvements. Relative error is very high.
 
@@ -564,9 +591,9 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     - Current Year Data
         ```
        CatBoost Regressor (no past history, synthetic data):
-        R² score: 0.484
-        Mean Absolute Error (MAE): 83.217
-        Relative Error: 37.17%
+        R² score: 0.556
+        Mean Absolute Error (MAE): 81.279
+        Relative Error: 36.30%
         
         Baseline MAE: 106.62, Baseline R²: -0.00
         ```
@@ -575,12 +602,12 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 
     - Prior 10 year averages
         ```
-        CatBoost Regressor(prior 10 year averages history, synthetic data):
-        R² score: 0.179
-        Mean Absolute Error (MAE): 111.420
-        Relative Error: 48.81%
+       CatBoost Regressor(prior 10 year averages history, synthetic data):
+        R² score: 0.258
+        Mean Absolute Error (MAE): 111.145
+        Relative Error: 48.75%
         
-        Baseline MAE: 127.51, Baseline R²: -0.00
+        Baseline MAE: 127.10, Baseline R²: -0.00
         ```
         - Extremely similar results to TabPFN, only slightly outperforms a naive average prediction and error is still very high.
 
@@ -592,12 +619,13 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     Feature Importance
       <img src="./etc/tabpfn_feature_importance.png" alt="drawing" width="300"/> 
     ```
-    median_dead: 25.1987
-    median_duration: 8.5578
-    median_displaced: 8.1420
-    median_area: 1.0354
-    max_severity: 0.6749
-    flood_count: 0.1369
+    Feature Importances:
+    median_dead: 24.8510
+    median_displaced: 7.8360
+    median_duration: 6.1656
+    max_severity: 2.1660
+    median_area: 1.1634
+    flood_count: 0.4788
     ```
    
     - Analysis: The `TabPFN Regressor` strongly emphasizes the median human impact of floods (median_dead, median_displaced) and their typical duration as key drivers of HPI, while frequency (flood_count) and extreme severity (max_severity) appear to have a much lesser influence in this model. This suggests that the consistent consequences of flooding events are more predictive of housing prices than their mere occurrence or isolated extreme instances.
@@ -611,12 +639,12 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
     Feature Importance/SHAP Values
     ```
     Feature Importances:
-    median_dead: 22.0923
-    median_displaced: 6.2072
-    median_duration: 5.7951
-    median_area: 5.6781
-    max_severity: 5.1088
-    flood_count: 1.1935
+    median_dead: 20.1424
+    median_displaced: 11.5681
+    median_duration: 8.4049
+    median_area: 6.7207
+    max_severity: 5.6479
+    flood_count: 2.6377
      ```
     <img src="./etc/catboost_feature_importance.png" alt="drawing" width="300"/> 
     <img src="./etc/catboost_shap_values.png" alt="drawing" width="300"/> 
@@ -641,3 +669,21 @@ Added Neural Network section to `src/ml_climate_precipitation_prediction.ipynb`
 ## 5/1 - Melina
 
 ## **Summary of code & data**
+**`src`  folder should contain all code & data**
+
+**code**
+
+- `initial_analysis.py`
+    - data:
+        - yahoo finance stock data for **LGI Homes Inc** (`stock.json` )
+        - global map visualization of flood data (`FloodArchive.xlsx` )
+- `ml_climate_precipitation_prediction.ipynb`
+    - data:
+        - MA precipitation only data (2007-2014) `precipitation_data.csv`
+        - Normals(temp., wind, etc.) hourly dataset for two MA stations in 2010 `2010_weather_MA.csv`
+        - combined dataset: `combined_weather_precipitation.csv`
+- `natural_disaster_housing_prediction.ipynb`
+    - data:
+        - Flood data: `united_states_floods.csv`
+        - Housing data: `united_states_housing.csv`
+        - Combined data: `merged_housing_flood_data.csv`
